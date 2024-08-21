@@ -23,7 +23,20 @@ services:
     ports:
       - "9092:9092"
     volumes:
-      - kafka-data:/var/lib/kafka/data
+      - kafka-data:/var/lib/kafka/da
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: orders
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
 
 volumes:
   kafka-data:
+  mongodb-data:

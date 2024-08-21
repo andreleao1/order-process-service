@@ -1,9 +1,12 @@
-package com.agls.order_process_service.domain.models;
+package com.agls.order_process_service.domain.entities;
 
+import com.agls.order_process_service.domain.enums.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 
@@ -11,7 +14,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 @Builder
-public class BitcoinOrderModel {
+@Document("orders")
+public class Order {
+
+    @Id
+    private String id;
 
     private String tradeId;
 
@@ -20,4 +27,6 @@ public class BitcoinOrderModel {
     private BigDecimal dollarAmount;
 
     private BigDecimal effectiveBitcoinPurchased;
+
+    private OrderStatus status;
 }
